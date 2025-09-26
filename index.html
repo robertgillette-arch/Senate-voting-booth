@@ -4,8 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shark Senate Voting Booth</title>
+
+<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart.js Data Labels Plugin -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -66,7 +70,6 @@
     margin: 20px auto;
     display: block;
   }
-
   /* Toast Popup */
   #toast {
     visibility: hidden;
@@ -104,10 +107,9 @@
     <img src="bert.jpg" alt="Bert">
     <h3>Bert</h3>
     <ul style="text-align:left;">
-      
+      <li>All pizzas should have pineapple</li>
       <li>Loves pigeons and oatmeal</li>
       <li>Supports tidy rooms and good habits</li>
-	<li>All pizzas will have pineapple</li>
       <li>Wants more time for reading</li>
     </ul>
     <button onclick="castVote('Bert')">Vote for Bert</button>
@@ -115,12 +117,11 @@
 
   <!-- Ernie -->
   <div class="candidate">
-    <img src="C:\Users\robgil13\Desktop\website\ernie.webp" alt="Ernie">
+    <img src="ernie.jpg" alt="Ernie">
     <h3>Ernie</h3>
     <ul style="text-align:left;">
-      
+      <li>Hot dogs are sandwiches</li>
       <li>Advocates for fun and creativity</li>
-	<li>Hot dogs will henceforth be identified as sandwiches</li>
       <li>Supports rubber duckies everywhere</li>
       <li>Wants to reduce bedtime rules</li>
     </ul>
@@ -129,12 +130,12 @@
 
   <!-- The Count -->
   <div class="candidate">
-    <img src="C:\Users\robgil13\Desktop\website\Count_von_Count_kneeling.png" alt="The Count">
+    <img src="count.jpg" alt="The Count">
     <h3>The Count</h3>
     <ul style="text-align:left;">
       <li>Wants to count every step you take daily</li>
       <li>Focuses on strong math skills</li>
-      <li>Thinks his votes should count twice.</li>
+      <li>Believes in fairness and numbers</li>
       <li>Every activity must be counted exactly 100 times</li>
     </ul>
     <button onclick="castVote('The Count')">Vote for The Count</button>
@@ -195,7 +196,7 @@
   function castVote(candidate) {
     if (candidate === "The Count") votes[candidate] += 2; // double vote
     else votes[candidate] += 1;
-    resultsChart.data.datasets[0].data = Object.values(votes);
+    resultsChart.data.datasets[0].data = Object.values(votes); // update chart
     resultsChart.update();
     showToast(messages[candidate], colors[candidate]);
   }
@@ -215,7 +216,7 @@
     toast.innerText = message;
     toast.style.backgroundColor = color;
     toast.className = "show";
-    setTimeout(() => { toast.className = toast.className.replace("show",""); }, 5000); // 6 sec
+    setTimeout(() => { toast.className = toast.className.replace("show",""); }, 5000); // 5 seconds
   }
 </script>
 </body>
